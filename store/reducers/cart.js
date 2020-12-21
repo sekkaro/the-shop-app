@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
             }
             return {
                 ...state,
-                item: updatedCartItems,
+                items: updatedCartItems,
                 totalAmount: state.totalAmount - selectedCartItem.productPrice
             }
         default:
