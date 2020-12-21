@@ -12,10 +12,10 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 userProducts: state.userProducts.filter(product =>
-                    product.ownerId !== action.pid
+                    product.id !== action.pid
                 ),
                 availableProducts: state.availableProducts.filter(product =>
-                    product.ownerId !== action.pid
+                    product.id !== action.pid
                 )
             };
     }

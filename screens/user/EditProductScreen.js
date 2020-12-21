@@ -48,24 +48,24 @@ const EditProductScreen = props => {
                         onChangeText={text => setTitle(text)}
                     />
                 </View>
+                <View style={styles.formControl}>
+                    <Text style={styles.label}>Image URL</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={imageUrl}
+                        onChangeText={text => setImageUrl(text)}
+                    />
+                </View>
                 {editedProduct ? null : (
                     <View style={styles.formControl}>
-                        <Text style={styles.label}>Image URL</Text>
+                        <Text style={styles.label}>Price</Text>
                         <TextInput
                             style={styles.input}
-                            value={imageUrl}
-                            onChangeText={text => setImageUrl(text)}
+                            value={price}
+                            onChangeText={text => setPrice(text)}
                         />
                     </View>
                 )}
-                <View style={styles.formControl}>
-                    <Text style={styles.label}>Price</Text>
-                    <TextInput
-                        style={styles.input}
-                        value={price}
-                        onChangeText={text => setPrice(text)}
-                    />
-                </View>
                 <View style={styles.formControl}>
                     <Text style={styles.label}>Description</Text>
                     <TextInput
