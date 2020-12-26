@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, Button, Platform } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import ProductItem from '../../components/shop/ProductItem';
 import HeaderButton from '../../components/UI/HeaderButton';
-import * as CartActions from '../../store/actions/cart';
+import * as cartActions from '../../store/actions/cart';
+import * as ProductsActions from '../../store/actions/products';
 import Colors from '../../constants/Colors';
 
 const ProductsOverviewScreen = props => {
     const products = useSelector(state => state.products.availableProducts);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(ProductsActions.fetchProducts());
+    }, [dispatch]);
 
     const selectItemHandler = (id, title) => {
         props.navigation.navigate('ProductDetail', {
@@ -43,7 +48,7 @@ const ProductsOverviewScreen = props => {
                         color={Colors.primary}
                         title="To Cart"
                         onPress={() => {
-                            dispatch(CartActions.addToCart(itemData.item));
+                            dispatch(cartActions.addToCart(itemData.item));
                         }}
                     />
                 </ProductItem>
