@@ -6,7 +6,8 @@ import {
     View,
     Button,
     ActivityIndicator,
-    Alert
+    Alert,
+    Platform
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useDispatch } from 'react-redux';
@@ -82,10 +83,11 @@ const AuthScreen = props => {
         setIsLoading(true);
         try {
             await dispatch(action);
+            props.navigation.navigate('Shop');
         } catch (err) {
             setError(err.message);
+            setIsLoading(false);
         }
-        setIsLoading(false);
     };
 
     const inputChangeHandler = useCallback(
@@ -102,8 +104,7 @@ const AuthScreen = props => {
 
     return (
         <KeyboardAvoidingView
-            behavior='padding'
-            keyboardVerticalOffset={50}
+            behavior={Platform.OS === "ios" ? "padding" : null}
             style={styles.screen}
         >
             <LinearGradient
