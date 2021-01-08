@@ -51,17 +51,17 @@ const ProductsStackNavigator = createStackNavigator();
 export const ProductsNavigator = () => {
   return (
     <ProductsStackNavigator.Navigator screenOptions={defaultNavOptions}>
-      <ProductsStackNavigator.screen
+      <ProductsStackNavigator.Screen
         name="ProductsOverview"
         component={ProductsOverviewScreen}
         options={ProductsOverviewScreenOptions}
       />
-      <ProductsStackNavigator.screen
+      <ProductsStackNavigator.Screen
         name="ProductDetail"
         component={ProductDetailScreen}
         options={ProductDetailScreenOptions}
       />
-      <ProductsStackNavigator.screen
+      <ProductsStackNavigator.Screen
         name="Cart"
         component={CartScreen}
         options={CartScreenOptions}
